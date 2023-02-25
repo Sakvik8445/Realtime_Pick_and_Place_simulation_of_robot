@@ -1,0 +1,52 @@
+zero
+y
+sp 30
+
+edit exercise1
+p1 = 1004
+p2 = 1005
+p3 = 1006
+r1 = 1007
+r2 = 1008
+conv = 1
+tool succion.pad
+signal 5
+move wait.loc
+wait sig(1004) or sig(1005)
+if sig(p1) then
+set loc = p1
+else
+set loc = p2
+end
+appro loc,50
+moves loc
+closei
+depart 50
+appro place,50
+moves place
+openi
+depart 50
+signal(2)
+signal(conv)
+wait sig(r2)
+signal (-conv)
+timer 1 = 0
+wait timer(1)>1
+signal(-2)
+signal(conv)
+wait sig(r1)
+signal(-conv)
+appro r1,50
+moves r1
+closei
+depart 50
+appro p3,50
+moves p3
+openi
+depart 50
+move wait.loc
+e
+
+load pickconv.lc
+load alltools.v2
+
